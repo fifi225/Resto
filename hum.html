@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Océanie Délice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5e6ff; /* violet pâle */
+    }
+
+    header {
+      background-color: #800080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      background-color: #9932CC;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .hero {
+      background-color: #ede0ff;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+    .menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .menu button {
+      background-color: #800080;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    #panier {
+      background-color: #faf0ff;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background-color: #800080;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #800080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .partenaires {
+      background-color: #ede0ff;
+      padding: 2rem;
+    }
+
+    .partenaires ul {
+      list-style: disc;
+      padding-left: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Océanie Délice</h1>
+    <p>Saveurs marines et délices tropicaux</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#jus">Jus</a></li>
+      <li><a href="#reservation">Réservation</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h2>Bienvenue chez Océanie Délice</h2>
+    <p>Découvrez une expérience culinaire inspirée de la mer et des îles</p>
+  </section>
+
+  <section class="menu" id="menu">
+    <h3>Nos Plats</h3>
+    <ul>
+      <li>Poisson braisé - 4500 FCFA <button onclick="ajouterAuPanier('Poisson braisé', 4500)">Ajouter</button></li>
+      <li>Crevettes sautées - 5000 FCFA <button onclick="ajouterAuPanier('Crevettes sautées', 5000)">Ajouter</button></li>
+      <li>Riz coco poulet - 3500 FCFA <button onclick="ajouterAuPanier('Riz coco poulet', 3500)">Ajouter</button></li>
+      <li>Calamars grillés - 4000 FCFA <button onclick="ajouterAuPanier('Calamars grillés', 4000)">Ajouter</button></li>
+    </ul>
+  </section>
+
+  <section class="menu" id="jus">
+    <h3>Jus & Fruits</h3>
+    <ul>
+      <li>Jus de Bissap - 1000 FCFA <button onclick="ajouterAuPanier('Jus de Bissap', 1000)">Ajouter</button></li>
+      <li>Jus de Gingembre - 1000 FCFA <button onclick="ajouterAuPanier('Jus de Gingembre', 1000)">Ajouter</button></li>
+      <li>Jus d’Ananas - 1200 FCFA <button onclick="ajouterAuPanier('Jus d’Ananas', 1200)">Ajouter</button></li>
+      <li>Jus de Mangue - 1200 FCFA <button onclick="ajouterAuPanier('Jus de Mangue', 1200)">Ajouter</button></li>
+      <li>Jus de Goyave - 1200 FCFA <button onclick="ajouterAuPanier('Jus de Goyave', 1200)">Ajouter</button></li>
+      <li>Jus d’Orange frais - 1500 FCFA <button onclick="ajouterAuPanier('Jus d’Orange frais', 1500)">Ajouter</button></li>
+      <li>Jus de Tamarin - 1000 FCFA <button onclick="ajouterAuPanier('Jus de Tamarin', 1000)">Ajouter</button></li>
+      <li>Cocktail Tropical - 1500 FCFA <button onclick="ajouterAuPanier('Cocktail Tropical', 1500)">Ajouter</button></li>
+    </ul>
+
+    <div id="panier">
+      <h4>Votre Panier</h4>
+      <ul id="listePanier"></ul>
+      <p>Total : <span id="total">0</span> FCFA</p>
+    </div>
+  </section>
+
+  <section id="reservation">
+    <h3>Réservez une Table</h3>
+    <form>
+      <input type="text" placeholder="Nom complet" required />
+      <input type="email" placeholder="Email" required />
+      <input type="tel" placeholder="Téléphone" required />
+      <input type="date" required />
+      <textarea placeholder="Message (optionnel)"></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h3>Contact</h3>
+    <p>Adresse : Quartier Lagune, Abidjan</p>
+    <p>Téléphone : +225 01 23 45 67 89</p>
+    <p>Email : contact@oceanie-delice.ci</p>
+  </section>
+
+  <section class="partenaires">
+    <h3>Fournisseurs & Partenaires</h3>
+    <ul>
+      <li>Poissonnerie Atlantique Ivoire</li>
+      <li>Jus Naturel Tropic Bio</li>
+      <li>Fruits Exotiques Ivoire</li>
+      <li>Emballages & Services FoodPro</li>
+      <li>Partenaire logistique : Cargofresh CI</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Océanie Délice. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const panier = [];
+    function ajouterAuPanier(nom, prix) {
+      panier.push({ nom, prix });
+      afficherPanier();
+    }
+
+    function afficherPanier() {
+      const liste = document.getElementById('listePanier');
+      const totalEl = document.getElementById('total');
+      liste.innerHTML = '';
+      let total = 0;
+
+      panier.forEach((item, index) => {
+        total += item.prix;
+        const li = document.createElement('li');
+        li.textContent = `${item.nom} - ${item.prix} FCFA `;
+        const btnSuppr = document.createElement('button');
+        btnSuppr.textContent = "X";
+        btnSuppr.style.marginLeft = "10px";
+        btnSuppr.onclick = () => {
+          panier.splice(index, 1);
+          afficherPanier();
+        };
+        li.appendChild(btnSuppr);
+        liste.appendChild(li);
+      });
+
+      totalEl.textContent = total;
+    }
+  </script>
+
+</body>
+</html>
